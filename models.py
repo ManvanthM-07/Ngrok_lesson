@@ -7,3 +7,24 @@ class User(Base):
     id=Column(Integer,primary_key=True,index=True)
     email=Column(String,index=True)
     password=Column(String)
+    api_key=Column(String)
+    user_name=Column(String,unique=True)
+    
+class Address(Base):
+    __tablename__="addresses"
+    id=Column(Integer,primary_key=True,index=True)
+    user_id=Column(Integer,index=True)
+    address=Column(String,index=True)
+    city=Column(String,index=True)
+    state=Column(String,index=True)
+    zip_code=Column(String,index=True)
+    country=Column(String,index=True)
+
+class Order(Base):
+    __tablename__="orders"
+    id=Column(Integer,primary_key=True,index=True)
+    user_id=Column(Integer,index=True)
+    address_id=Column(Integer,index=True)
+    order_date=Column(DateTime,index=True)
+    order_status=Column(String,index=True)
+    order_total=Column(Integer,index=True)
